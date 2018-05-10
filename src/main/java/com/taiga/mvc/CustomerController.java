@@ -1,4 +1,4 @@
-package com.taiga;
+package com.taiga.mvc;
 
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;

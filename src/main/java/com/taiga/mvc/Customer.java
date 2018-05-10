@@ -1,4 +1,4 @@
-package com.taiga;
+package com.taiga.mvc;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -10,6 +10,9 @@ public class Customer extends Person{
     @Min(value = 0, message = ">0!")
     @Max(value = 10, message = "<10")
     private Integer coupons;
+
+    @NeedLove
+    private String love;
 
     @Pattern(regexp = "^[a-zA-Z0-9]{5}", message = "not a postalCode")
     private String postalCode;
@@ -28,5 +31,13 @@ public class Customer extends Person{
 
     public void setPostalCode(String postalCode) {
         this.postalCode = postalCode;
+    }
+
+    public void setLove(String love) {
+        this.love = love;
+    }
+
+    public String getLove() {
+        return love;
     }
 }

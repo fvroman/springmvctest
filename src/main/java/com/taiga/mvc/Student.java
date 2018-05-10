@@ -1,4 +1,4 @@
-package com.taiga;
+package com.taiga.mvc;
 
 import java.util.LinkedHashMap;
 import java.util.List;

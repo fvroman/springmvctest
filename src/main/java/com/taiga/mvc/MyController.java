@@ -1,4 +1,4 @@
-package com.taiga;
+package com.taiga.mvc;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

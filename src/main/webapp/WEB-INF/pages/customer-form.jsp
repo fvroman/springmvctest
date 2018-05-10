@@ -22,6 +22,9 @@
     Индекс<form:input path="postalCode"/>
     <form:errors path="postalCode" cssClass="error"/>
     <br>
+    Love <form:input path="love"/>
+    <form:errors path="love" cssClass="error"/>
+    <br>
     <input type="submit"/>
 </form:form>
 
