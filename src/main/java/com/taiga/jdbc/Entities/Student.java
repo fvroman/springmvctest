@@ -35,9 +35,17 @@ public class Student {
     @JoinColumn(name = "student_detail_id")
     private StudentDetail studentDetail;
 
-    @OneToMany(mappedBy = "student", cascade = {CascadeType.DETACH, CascadeType.MERGE,
+    @OneToMany(mappedBy = "student", fetch = FetchType.LAZY, cascade = {CascadeType.DETACH, CascadeType.MERGE,
                                                 CascadeType.PERSIST, CascadeType.REFRESH})
     private List<Course> courses;
+
+    @ManyToMany(fetch = FetchType.LAZY, cascade = {CascadeType.DETACH, CascadeType.MERGE,
+            CascadeType.PERSIST, CascadeType.REFRESH})
+    @JoinTable(name = "student_girls",
+                joinColumns = @JoinColumn(name = "student_id"),
+                inverseJoinColumns = @JoinColumn(name = "girl_id")
+                )
+    private List<Girl> girls;
 
     public void setCourses(List<Course> courses) {
         this.courses = courses;
@@ -81,8 +89,20 @@ public class Student {
         return email;
     }
 
+    public List<Course> getCourses() {
+        return courses;
+    }
+
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public List<Girl> getGirls() {
+        return girls;
+    }
+
+    public void setGirls(List<Girl> girls) {
+        this.girls = girls;
     }
 
     public void addCourse(Course course) {
@@ -91,6 +111,13 @@ public class Student {
         }
         courses.add(course);
         course.setStudent(this);
+    }
+
+    public void addGirl(Girl girl) {
+        if (girls == null) {
+            girls = new ArrayList<>();
+        }
+        girls.add(girl);
     }
 
     @Override
